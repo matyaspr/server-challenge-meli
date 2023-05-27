@@ -4,11 +4,11 @@
   "description": "server challenge mercado libre",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn src/server.ts",
-    "start": "tsc && node dist/server.js",
+    "dev": "ts-node-dev --respawn app.ts",
+    "start": "tsc && node dist/app.js",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "debug": "npm run build && node --inspect-brk=9229 dist/server.js",
+    "debug": "npm run build && node --inspect-brk=9229 dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,6 +18,7 @@
   "author": "matyaspr@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.2.4",
@@ -34,6 +35,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2"
