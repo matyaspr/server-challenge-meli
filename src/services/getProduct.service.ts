@@ -50,7 +50,7 @@ export const getProductByIdService = async  (id: string): Promise<IResponseGetPr
   let pDescription:ItemDescription = await fetchMeliItems({id, description: true})
   if(!pDescription.plain_text) pDescription.plain_text = 'Producto sin descripción.'
   
-  const responseItem =  await getProductWithDescription(item, pDescription); 
+  const responseItem =  await getProductWithDescription(item, pDescription, categories); 
   
  return responseItem
 }
@@ -58,7 +58,7 @@ export const getProductByIdService = async  (id: string): Promise<IResponseGetPr
 
 
 
-const getProductWithDescription = async(item: Items, pDescription: ItemDescription): Promise<IResponseGetProductsDetails> => {  
+const getProductWithDescription = async(item: Items, pDescription: ItemDescription, categories: string[] ): Promise<IResponseGetProductsDetails> => {  
   let res: IResponseGetProductsDetails = {
     author: {
       name: "Matias",
@@ -77,7 +77,8 @@ const getProductWithDescription = async(item: Items, pDescription: ItemDescripti
       free_shipping: item.shipping.free_shipping,
       sold_quantity: item.sold_quantity,
       description: pDescription.plain_text
-    }
+    },
+    categories
   }
 
   return res;
